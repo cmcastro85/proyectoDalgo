@@ -35,7 +35,8 @@ public class ProblemaA {
 		int i =0;
 		int j =n-1;
 		while(i<=j){
-			cp += r[i]*r[j];
+			if(i != j) cp += r[i]*r[j]*2;
+			else cp += r[i]*r[j];
 			i++;
 			j--;
 		}
