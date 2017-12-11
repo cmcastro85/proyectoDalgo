@@ -43,7 +43,9 @@ public class ProblemaB {
 						grafos[k] = list.get(k);
 					}
 					b.cambiarGrafos(grafos);
-					System.out.println("Resultado: " + b.diferencial() + ", con: " + list.size() + " grafos");
+					//debug print
+					//System.out.println("Resultado: " + b.diferencial() + ", con: " + list.size() + " grafos");
+					System.out.println(b.diferencial());
 					b = new ProblemaB();
 					line = br.readLine();
 				}
