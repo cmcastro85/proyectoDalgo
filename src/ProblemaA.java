@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /**
  * 
  * @author camilo
@@ -41,5 +45,25 @@ public class ProblemaA {
 			j--;
 		}
 		return cp;
+	}
+	
+	public static void main(String[] args) throws Exception{
+		try ( 
+				InputStreamReader is= new InputStreamReader(System.in);
+				BufferedReader br = new BufferedReader(is);
+			)
+				{ 
+					String line = br.readLine();
+					
+					while(line!=null && line.length()>0){
+						final String [] dataStr = line.split(" ");
+						ProblemaA a = new ProblemaA(Double.parseDouble(dataStr[1]),
+								Double.parseDouble(dataStr[2]),Double.parseDouble(dataStr[3]),
+										Double.parseDouble(dataStr[4]),Integer.parseInt(dataStr[0]));
+						a.r();
+						System.out.println(a.cp());
+						line = br.readLine();
+					}
+				}
 	}
 }
