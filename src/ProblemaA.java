@@ -19,7 +19,7 @@ public class ProblemaA {
 	private double d;
 	
 	public ProblemaA(double a, double b, double c, double d, int n){
-		r = new double[n];
+		r = new double[n+1];
 		r[0] = a;
 		r[1] = b;
 		this.n= n;
@@ -28,19 +28,18 @@ public class ProblemaA {
 	}
 	
 	public void r(){
-		for(int i = 2; i<n; i++){
-			r[i] = c*r[i-1] + d*r[i-2];
-			System.out.println(c+", "+d+", "+r[i]);
+		for(int i = 2; i<=n; i++){
+			r[i] = c*r[i-2] + d*r[i-1];
 		}
 	}
 	
-	public int cp(){
-		int cp = 0;
+	public double cp(){
+		double cp = 0;
 		int i =0;
-		int j =n-1;
-		while(i<=j){
-			if(i != j) cp += r[i]*r[j]*2;
-			else cp += r[i]*r[j];
+		int j =n;
+		while(i<=n && j>=0){
+			cp += r[i]*r[j];
+			System.out.println(cp + " cp " +r[i]+" i "+r[j]+" r");
 			i++;
 			j--;
 		}
@@ -64,7 +63,7 @@ public class ProblemaA {
 						a.r();
 						double round = Math.round(a.cp() * 1000);
 						round = round/1000;
-						System.out.println(round);
+						System.out.println(round+"........"+"\br");
 						line = br.readLine();
 					}
 				}
