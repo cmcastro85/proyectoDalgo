@@ -2,24 +2,49 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Stack;
 
 public class ProblemaB {
 
 	public static void main(String[] args){
+		
+		ProblemaB b = new ProblemaB();
 		try {
+			ArrayList<Graph> list = null;
 			File f = new File("./data/testB.in");
 			//InputStreamReader is= new InputStreamReader(System.in);
 			FileReader is = new FileReader(f);
 			BufferedReader br = new BufferedReader(is);
 			{ 
 				String line = br.readLine();
-
+				
 				while(line!=null && line.length()>0) {
-					String [] dataStr = line.split(" ");
-					
-					System.out.println(line);
+					//String [] dataStr = line.split(" ");
+					//System.out.println(line);
+					int n = Integer.parseInt(line); //numero de grafos en el problema
+					list = new ArrayList<>();	
+					for(int i = 0; i < n; i++){
+						//aca se crean los grafos del problema
+						
+						String[] lines = br.readLine().split(" ");
+						Graph a = new Graph(Integer.parseInt(lines[0]));
+						//System.out.println(a.V);
+						for(int j = 0; j < (Integer.parseInt(lines[1])*2); j+= 2){
+							a.addEdge(Integer.parseInt(lines[j+2]), Integer.parseInt(lines[j+3]));
+						}
+						//System.out.println(a);
+						list.add(a);
+					}
+					//se termina la lista de grafos, se le pasan a ProblemaB
+					Graph[] grafos = new Graph[list.size()];
+					for(int k = 0; k < list.size(); k++){
+						grafos[k] = list.get(k);
+					}
+					b.cambiarGrafos(grafos);
+					System.out.println("Resultado: " + b.diferencial() + ", con: " + list.size() + " grafos");
+					b = new ProblemaB();
 					line = br.readLine();
 				}
 			}
@@ -32,7 +57,7 @@ public class ProblemaB {
 		}
 	}
 
-		public class Bag<Item> implements Iterable<Item> {
+		public static class Bag<Item> implements Iterable<Item> {
 			private Node<Item> first;    // beginning of bag
 			private int n;               // number of elements in bag
 
@@ -113,7 +138,7 @@ public class ProblemaB {
 
 		}
 
-		public class Graph {
+		public static class Graph {
 			private final String NEWLINE = System.getProperty("line.separator");
 
 			private final int V;
@@ -243,7 +268,7 @@ public class ProblemaB {
 			}
 		}
 
-		public class Bipartite {
+		public static class Bipartite {
 			private boolean isBipartite;   // is the graph bipartite?
 			private boolean[] color;       // color[v] gives vertices on one side of bipartition
 			private boolean[] marked;      // marked[v] = true if v has been visited in DFS
@@ -394,15 +419,18 @@ public class ProblemaB {
 
 		private int anterior;
 
-		public ProblemaB(Graph[] g){
-			this.grafo = g;
+		public ProblemaB(){
 			anterior = 0;
+		}
+		
+		public void cambiarGrafos(Graph[] a){
+			this.grafo = a;
 		}
 
 		public int diferencial(){
 			for(Graph g : grafo){
 				Bipartite b = new Bipartite(g);
-				anterior = Math.abs(anterior) - b.diferencial();
+				anterior += Math.abs(anterior - b.diferencial());
 			}
 			return anterior;
 		}
