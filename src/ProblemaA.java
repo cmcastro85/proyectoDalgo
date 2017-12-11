@@ -39,7 +39,6 @@ public class ProblemaA {
 		int j =n;
 		while(i<=n && j>=0){
 			cp += r[i]*r[j];
-			System.out.println(cp + " cp " +r[i]+" i "+r[j]+" r");
 			i++;
 			j--;
 		}
@@ -63,7 +62,7 @@ public class ProblemaA {
 						a.r();
 						double round = Math.round(a.cp() * 10000);
 						round = round/10000;
-						System.out.println(round+"........"+"\br");
+						System.out.println(round);
 						line = br.readLine();
 					}
 				}
