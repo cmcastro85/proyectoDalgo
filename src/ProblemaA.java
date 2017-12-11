@@ -1,5 +1,5 @@
 import java.io.BufferedReader;
-import java.io.IOException;
+
 import java.io.InputStreamReader;
 
 /**
@@ -25,12 +25,12 @@ public class ProblemaA {
 		this.n= n;
 		this.c = c;
 		this.d = d;
-		
 	}
 	
 	public void r(){
 		for(int i = 2; i<n; i++){
-			r[i] = c*r[i-1] + d*r[i-2]; 
+			r[i] = c*r[i-1] + d*r[i-2];
+			System.out.println(c+", "+d+", "+r[i]);
 		}
 	}
 	
@@ -49,6 +49,7 @@ public class ProblemaA {
 	
 	public static void main(String[] args) throws Exception{
 		try ( 
+				
 				InputStreamReader is= new InputStreamReader(System.in);
 				BufferedReader br = new BufferedReader(is);
 			)
