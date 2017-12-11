@@ -402,7 +402,7 @@ public class ProblemaB {
 		public int diferencial(){
 			for(Graph g : grafo){
 				Bipartite b = new Bipartite(g);
-				anterior = Math.abs(anterior) - b.diferencial();
+				anterior += Math.abs(anterior) - b.diferencial();
 			}
 			return anterior;
 		}

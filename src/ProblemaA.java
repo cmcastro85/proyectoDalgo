@@ -61,7 +61,9 @@ public class ProblemaA {
 								Double.parseDouble(dataStr[2]),Double.parseDouble(dataStr[3]),
 										Double.parseDouble(dataStr[4]),Integer.parseInt(dataStr[0]));
 						a.r();
-						System.out.println(a.cp());
+						double round = Math.round(a.cp() * 1000);
+						round = round/1000;
+						System.out.println(round);
 						line = br.readLine();
 					}
 				}
