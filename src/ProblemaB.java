@@ -44,8 +44,8 @@ public class ProblemaB {
 					}
 					b.cambiarGrafos(grafos);
 					//debug print
-					System.out.println("Resultado: " + b.diferencial() + ", con: " + list.size() + " grafos");
-					//System.out.println(b.diferencial());
+					//System.out.println("Resultado: " + b.diferencial() + ", con: " + list.size() + " grafos");
+					System.out.println(b.diferencial());
 					b = new ProblemaB();
 					line = br.readLine();
 				}
@@ -302,11 +302,24 @@ public class ProblemaB {
 			}
 
 			public int red(){
-				return red;
+				return this.red;
 			}
 			
 			public int blue(){
-				return blue;
+				return this.blue;
+			}
+			
+			public int calcularDifManual(){
+				int r = 0;
+				int b = 0;
+				for(boolean v: color){
+					if(v){
+						r++;
+					}else{
+						b++;
+					}
+				}
+				return Math.abs(r-b);
 			}
 			
 			private void dfs(Graph G, int v) { 
@@ -442,10 +455,13 @@ public class ProblemaB {
 			for(Graph g : grafo){
 				
 				Bipartite b = new Bipartite(g);
-				System.out.println("grafo: " + g);
-				System.out.println("Reds en el grafo " + i + ": " + b.red());
-				System.out.println("blues en el grafo " + i + ": " + b.red());
-				anterior += Math.abs(anterior - b.diferencial());
+				//System.out.println("\n===============grafo " + i + "==============\n " + g);
+				//System.out.println("Reds en el grafo " + i + ": " + b.red());
+				//System.out.println("blues en el grafo " + i + ": " + b.red());
+				//System.out.println("diferencial del grafo " + i + ": " + b.diferencial());
+				//System.out.println("diferencial MANUAL del grafo " + i + ": " + b.calcularDifManual());
+				//anterior += Math.abs(anterior - b.diferencial());
+				anterior = Math.abs(anterior - b.calcularDifManual());
 				i++;
 			}
 			return anterior;
