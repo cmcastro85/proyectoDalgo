@@ -6,6 +6,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Stack;
 
+
+/**
+ * 
+ * @author camilo
+ * Autores: Camilo Martinez 201531652
+ *          Juan David Zambrano - 20532524
+ */
+
 public class ProblemaB {
 
 	public static void main(String[] args){
