@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
@@ -16,9 +17,9 @@ public class ProblemaC {
 
 		ArrayList<Cadena> cadenas;
 		try {
-			File f = new File("./data/testC.in");
-			//InputStreamReader is= new InputStreamReader(System.in);
-			FileReader is = new FileReader(f);
+			//File f = new File("./data/testC.in");
+			InputStreamReader is= new InputStreamReader(System.in);
+			//FileReader is = new FileReader(f);
 			BufferedReader br = new BufferedReader(is);
 
 			String line = br.readLine();
@@ -102,22 +103,22 @@ public class ProblemaC {
 	public void execute() {
 		resetCounters();
 		String min = probarCadenas(0);
-		System.out.println("Resultado 0: " + min);
+		//System.out.println("Resultado 0: " + min);
 		resetCounters();
 		for(int i = 1; i < cadenas.size(); i++){
 			String a = probarCadenas(i);
-			System.out.println("Resultado " + i + ": " + a);
+			//System.out.println("Resultado " + i + ": " + a);
 			if(a.length() < min.length() && a != ""){
 				min = a;
 			}
 			resetCounters();
 		}
 		
-		System.out.println("Menor Cadena: " + min);
+		System.out.println(min);
 	}
 	
 	public String probarCadenas(int inic){
-		System.out.println(cadenas);
+		//System.out.println(cadenas);
 		String r = "";
 		boolean[] check = new boolean[cadenas.size()];
 		int[] backPos = new int[cadenas.size()];

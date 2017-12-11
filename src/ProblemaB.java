@@ -21,9 +21,9 @@ public class ProblemaB {
 		ProblemaB b = new ProblemaB();
 		try {
 			ArrayList<Graph> list = null;
-			File f = new File("./data/testB.in");
-			//InputStreamReader is= new InputStreamReader(System.in);
-			FileReader is = new FileReader(f);
+			//File f = new File("./data/testB.in");
+			InputStreamReader is= new InputStreamReader(System.in);
+			//FileReader is = new FileReader(f);
 			BufferedReader br = new BufferedReader(is);
 
 			String line = br.readLine();
